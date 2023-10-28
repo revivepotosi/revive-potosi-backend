@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { EnvConfiguration } from './config/env.config';
 import { JoiValidationSchema } from './config/joi.validation';
 import { CommonModule } from './common/common.module';
+import { AtraccionTuristicaModule } from './atraccion-turistica/atraccion-turistica.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CommonModule } from './common/common.module';
       dbName: process.env.DATABASE,
     }),
     CommonModule,
+    AtraccionTuristicaModule,
   ],
 })
 export class AppModule {}
