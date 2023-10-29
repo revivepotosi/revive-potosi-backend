@@ -40,6 +40,7 @@ export class AtraccionTuristicaService {
       .find()
       .limit(limit)
       .skip(offset)
+      .populate('horario.dia')
       .select('-__v');
   }
 

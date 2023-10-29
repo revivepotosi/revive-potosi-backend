@@ -5,6 +5,7 @@ import { EnvConfiguration } from './config/env.config';
 import { JoiValidationSchema } from './config/joi.validation';
 import { CommonModule } from './common/common.module';
 import { AtraccionTuristicaModule } from './atraccion-turistica/atraccion-turistica.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AtraccionTuristicaModule } from './atraccion-turistica/atraccion-turist
     }),
     CommonModule,
     AtraccionTuristicaModule,
+    SeedModule,
   ],
 })
 export class AppModule {}

@@ -1,5 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+import {
+  Translation,
+  TranslationSchema,
+} from 'src/common/entities/translation.entity';
 
 @Schema()
 export class Periodo {
@@ -12,19 +16,19 @@ export class Periodo {
 
 @Schema()
 export class Horario {
-  @Prop()
-  día: string;
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Day' })
+  dia: string;
 
-  @Prop({ type: [Periodo] })
+  @Prop([{ type: Periodo }])
   periodos: Periodo[];
 }
 
 @Schema()
 export class AtraccionTuristica extends Document {
-  @Prop()
-  name: string;
+  @Prop(TranslationSchema)
+  name: Translation;
 
-  @Prop({ type: [Horario] })
+  @Prop([{ type: Horario }])
   horario: Horario[];
 }
 
