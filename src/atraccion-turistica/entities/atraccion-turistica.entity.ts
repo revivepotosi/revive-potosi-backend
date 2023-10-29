@@ -5,22 +5,22 @@ import {
   TranslationSchema,
 } from 'src/common/entities/translation.entity';
 
-@Schema()
-export class Periodo {
+@Schema({ _id: false })
+export class Period {
   @Prop()
-  hora_inicio: string;
+  startTime: string;
 
   @Prop()
-  hora_fin: string;
+  endTime: string;
 }
 
-@Schema()
-export class Horario {
+@Schema({ _id: false })
+export class Schedule {
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Day' })
-  dia: string;
+  day: string;
 
-  @Prop([{ type: Periodo }])
-  periodos: Periodo[];
+  @Prop([{ type: Period }])
+  periods: Period[];
 }
 
 @Schema()
@@ -28,8 +28,17 @@ export class AtraccionTuristica extends Document {
   @Prop(TranslationSchema)
   name: Translation;
 
-  @Prop([{ type: Horario }])
-  horario: Horario[];
+  @Prop([{ type: Schedule }])
+  schedule: Schedule[];
+
+  @Prop()
+  address: string;
+
+  @Prop()
+  latitude: number;
+
+  @Prop()
+  longitude: number;
 }
 
 export const AtraccionTuristicaSchema =

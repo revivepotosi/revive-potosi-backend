@@ -6,6 +6,7 @@ import { JoiValidationSchema } from './config/joi.validation';
 import { CommonModule } from './common/common.module';
 import { AtraccionTuristicaModule } from './atraccion-turistica/atraccion-turistica.module';
 import { SeedModule } from './seed/seed.module';
+import { ContentModule } from './content/content.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { SeedModule } from './seed/seed.module';
     CommonModule,
     AtraccionTuristicaModule,
     SeedModule,
+    ContentModule,
   ],
 })
 export class AppModule {}

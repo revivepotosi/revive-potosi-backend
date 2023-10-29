@@ -40,12 +40,15 @@ export class AtraccionTuristicaService {
       .find()
       .limit(limit)
       .skip(offset)
-      .populate('horario.dia')
+      .populate('schedule.day')
       .select('-__v');
   }
 
   async findOne(id: string) {
-    const atraccionTuristica = await this.atraccionTuristicaModel.findById(id);
+    const atraccionTuristica = await this.atraccionTuristicaModel
+      .findById(id)
+      .populate('schedule.day')
+      .select('-__v');
     if (!atraccionTuristica)
       throw new NotFoundException(
         `Atractivo turistico con id "${id}" no encontrado`,

@@ -3,32 +3,33 @@ import {
   ArrayMinSize,
   IsArray,
   IsMongoId,
+  IsNumber,
   IsString,
   MinLength,
   ValidateNested,
 } from 'class-validator';
 import { TranslationDto } from 'src/common/dto/translation.dto';
 
-class PeriodoDto {
+class PeriodDto {
   @IsString()
   @MinLength(1)
-  hora_inicio: string;
+  startTime: string;
 
   @IsString()
   @MinLength(1)
-  hora_fin: string;
+  endTime: string;
 }
 
-class HorarioDto {
+class ScheduleDto {
   @IsMongoId()
   @MinLength(1)
-  dia: string;
+  day: string;
 
   @ArrayMinSize(1)
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => PeriodoDto)
-  periodos: PeriodoDto[];
+  @Type(() => PeriodDto)
+  periods: PeriodDto[];
 }
 
 export class CreateAtraccionTuristicaDto {
@@ -39,6 +40,16 @@ export class CreateAtraccionTuristicaDto {
   @ArrayMinSize(1)
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => HorarioDto)
-  horario: HorarioDto[];
+  @Type(() => ScheduleDto)
+  schedule: ScheduleDto[];
+
+  @IsString()
+  @MinLength(1)
+  address: string;
+
+  @IsNumber()
+  latitude: number;
+
+  @IsNumber()
+  longitude: number;
 }

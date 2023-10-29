@@ -4,12 +4,13 @@ import { Translation, TranslationSchema } from './translation.entity';
 
 @Schema()
 export class Day extends Document {
+  @Prop(TranslationSchema)
+  name: Translation;
   @Prop({
-    schema: TranslationSchema,
     unique: true,
     index: true,
   })
-  name: Translation;
+  position: number;
 }
 
 export const DaySchema = SchemaFactory.createForClass(Day);
