@@ -7,6 +7,10 @@ import { CommonModule } from './common/common.module';
 import { AtraccionTuristicaModule } from './atraccion-turistica/atraccion-turistica.module';
 import { SeedModule } from './seed/seed.module';
 import { ContentModule } from './content/content.module';
+import { AuthModule } from './auth/auth.module';
+import { RoleModule } from './role/role.module';
+import { DayModule } from './day/day.module';
+import { ContentTypeModule } from './content-type/content-type.module';
 
 @Module({
   imports: [
@@ -21,6 +25,10 @@ import { ContentModule } from './content/content.module';
     AtraccionTuristicaModule,
     SeedModule,
     ContentModule,
+    AuthModule,
+    RoleModule,
+    DayModule,
+    ContentTypeModule,
   ],
 })
 export class AppModule {}

@@ -3,7 +3,6 @@ import { ContentService } from './content.service';
 import { ContentController } from './content.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Content, ContentSchema } from './entities/content.entity';
-import { ContentType, ContentTypeSchema } from './entities/contentType.entity';
 
 @Module({
   controllers: [ContentController],
@@ -13,12 +12,6 @@ import { ContentType, ContentTypeSchema } from './entities/contentType.entity';
       {
         name: Content.name,
         schema: ContentSchema,
-      },
-    ]),
-    MongooseModule.forFeature([
-      {
-        name: ContentType.name,
-        schema: ContentTypeSchema,
       },
     ]),
   ],
