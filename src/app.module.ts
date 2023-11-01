@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { RoleModule } from './role/role.module';
 import { DayModule } from './day/day.module';
 import { ContentTypeModule } from './content-type/content-type.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ContentTypeModule } from './content-type/content-type.module';
     RoleModule,
     DayModule,
     ContentTypeModule,
+    UserModule,
   ],
 })
 export class AppModule {}
