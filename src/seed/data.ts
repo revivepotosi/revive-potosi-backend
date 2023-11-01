@@ -81,9 +81,6 @@ export const CONTENT_TYPES: ContentType[] = [
 
 export const ROLES: Role[] = [
   {
-    name: 'user',
-  },
-  {
-    name: 'places',
+    name: 'admin',
   },
 ];

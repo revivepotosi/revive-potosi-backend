@@ -49,11 +49,15 @@ export class UserService {
       .find()
       .limit(limit)
       .skip(offset)
+      .populate('roles')
       .select('-__v -password');
   }
 
   async findOne(id: string) {
-    const user = await this.userModel.findById(id).select('-__v -password');
+    const user = await this.userModel
+      .findById(id)
+      .populate('roles')
+      .select('-__v -password');
     if (!user)
       throw new NotFoundException(`Usuario con id "${id}" no encontrado`);
     return user;

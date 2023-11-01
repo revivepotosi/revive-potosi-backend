@@ -5,6 +5,9 @@ import {
   Matches,
   MinLength,
   MaxLength,
+  IsOptional,
+  IsArray,
+  IsMongoId,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -29,4 +32,9 @@ export class CreateUserDto {
     message: 'The password must contain at least one uppercase letter.',
   })
   password: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsMongoId({ each: true })
+  roles: string[];
 }

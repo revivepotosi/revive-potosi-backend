@@ -13,7 +13,10 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id.pipe';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { ValidRoles } from 'src/auth/constants/roles';
 
+@Auth(ValidRoles.admin)
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
