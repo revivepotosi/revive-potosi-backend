@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class ContentType extends Document {
-  @Prop()
+  @Prop({ unique: true })
   type: string;
 }
 

@@ -28,6 +28,9 @@ export class AtraccionTuristica extends Document {
   @Prop(TranslationSchema)
   name: Translation;
 
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'AtraccionTuristicaType' })
+  type: string;
+
   @Prop([{ type: Schedule }])
   schedule: Schedule[];
 

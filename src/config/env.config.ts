@@ -4,4 +4,5 @@ export const EnvConfiguration = () => ({
   port: process.env.PORT,
   database: process.env.DATABASE,
   defaultLimit: process.env.DEFAULT_LIMIT,
+  jwtSecret: process.env.JWT_SECRET,
 });

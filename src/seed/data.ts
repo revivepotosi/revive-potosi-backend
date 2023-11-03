@@ -1,5 +1,6 @@
-import { Day } from 'src/common/models/Day.interface';
-import { ContentType } from 'src/content/model/contentType.interface';
+import { ContentType } from 'src/content-type/interfaces/ContentType.interface';
+import { Day } from 'src/day/interfaces/Day.interface';
+import { Role } from 'src/role/interfaces/Role.interface';
 
 export const DAYS: Day[] = [
   {
@@ -75,5 +76,11 @@ export const CONTENT_TYPES: ContentType[] = [
   },
   {
     type: 'imageCarrousel',
+  },
+];
+
+export const ROLES: Role[] = [
+  {
+    name: 'admin',
   },
 ];

@@ -1,6 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { Translation, TranslationSchema } from './translation.entity';
+import {
+  Translation,
+  TranslationSchema,
+} from 'src/common/entities/translation.entity';
 
 @Schema()
 export class Day extends Document {
