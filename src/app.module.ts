@@ -12,6 +12,7 @@ import { RoleModule } from './role/role.module';
 import { DayModule } from './day/day.module';
 import { ContentTypeModule } from './content-type/content-type.module';
 import { UserModule } from './user/user.module';
+import { AtraccionTuristicaTypeModule } from './atraccion-turistica-type/atraccion-turistica-type.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { UserModule } from './user/user.module';
     DayModule,
     ContentTypeModule,
     UserModule,
+    AtraccionTuristicaTypeModule,
   ],
 })
 export class AppModule {}

@@ -41,6 +41,7 @@ export class AtraccionTuristicaService {
       .limit(limit)
       .skip(offset)
       .populate('schedule.day')
+      .populate('type')
       .select('-__v');
   }
 
@@ -48,6 +49,7 @@ export class AtraccionTuristicaService {
     const atraccionTuristica = await this.atraccionTuristicaModel
       .findById(id)
       .populate('schedule.day')
+      .populate('type')
       .select('-__v');
     if (!atraccionTuristica)
       throw new NotFoundException(

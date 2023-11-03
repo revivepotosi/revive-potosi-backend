@@ -37,6 +37,9 @@ export class CreateAtraccionTuristicaDto {
   @Type(() => TranslationDto)
   name: TranslationDto;
 
+  @IsMongoId()
+  type: string;
+
   @ArrayMinSize(1)
   @IsArray()
   @ValidateNested({ each: true })
