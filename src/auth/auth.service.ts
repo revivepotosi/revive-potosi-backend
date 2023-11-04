@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { jwtConfig } from './constants/jwt-config';
 
 @Injectable()
 export class AuthService {
@@ -16,20 +17,23 @@ export class AuthService {
   ) {}
 
   async login(loginDto: LoginDto) {
-    const { password, email, username } = loginDto;
+    const { password, email, username, rememberMe } = loginDto;
     const user: User = await this.findByEmailOrUsername(email, username);
     const isPasswordValid = await validePassword(password, user.password);
     if (isPasswordValid) {
       return {
         user,
-        token: this.getJwtToken({ _id: user._id }),
+        token: this.getJwtToken({ _id: user._id }, rememberMe),
       };
     }
     throw new BadRequestException('Usuario o contraseña incorrectos.');
   }
 
-  private getJwtToken(payload: JwtPayload) {
-    const token = this.jwtService.sign(payload);
+  private getJwtToken(payload: JwtPayload, rememberMe: boolean) {
+    const token = this.jwtService.sign(
+      payload,
+      rememberMe ? jwtConfig.oneMonth : jwtConfig.tenHours,
+    );
     return token;
   }
 

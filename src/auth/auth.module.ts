@@ -8,6 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/user/entities/user.entity';
 import { UserRoleGuard } from './guards/user-role.guard';
+import { jwtConfig } from './constants/jwt-config';
 
 @Module({
   controllers: [AuthController],
@@ -24,9 +25,7 @@ import { UserRoleGuard } from './guards/user-role.guard';
     JwtModule.registerAsync({
       useFactory: () => ({
         secret: process.env.JWT_SECRET,
-        signOptions: {
-          expiresIn: '2h',
-        },
+        signOptions: jwtConfig.tenHours,
       }),
     }),
   ],
