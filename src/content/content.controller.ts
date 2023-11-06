@@ -1,12 +1,12 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Query,
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    Query,
 } from '@nestjs/common';
 import { ContentService } from './content.service';
 import { CreateContentDto } from './dto/create-content.dto';
@@ -16,33 +16,33 @@ import { FindAllParamsDto } from './dto/find-all-params.dto';
 
 @Controller('content')
 export class ContentController {
-  constructor(private readonly contentService: ContentService) {}
+    constructor(private readonly contentService: ContentService) {}
 
-  @Post()
-  create(@Body() createContentDto: CreateContentDto) {
-    return this.contentService.create(createContentDto);
-  }
+    @Post()
+    create(@Body() createContentDto: CreateContentDto) {
+        return this.contentService.create(createContentDto);
+    }
 
-  @Get()
-  findAll(@Query() findAllParamsDto: FindAllParamsDto) {
-    return this.contentService.findAll(findAllParamsDto);
-  }
+    @Get()
+    findAll(@Query() findAllParamsDto: FindAllParamsDto) {
+        return this.contentService.findAll(findAllParamsDto);
+    }
 
-  @Get(':id')
-  findOne(@Param('id', ParseMongoIdPipe) id: string) {
-    return this.contentService.findOne(id);
-  }
+    @Get(':id')
+    findOne(@Param('id', ParseMongoIdPipe) id: string) {
+        return this.contentService.findOne(id);
+    }
 
-  @Patch(':id')
-  update(
-    @Param('id', ParseMongoIdPipe) id: string,
-    @Body() updateContentDto: UpdateContentDto,
-  ) {
-    return this.contentService.update(id, updateContentDto);
-  }
+    @Patch(':id')
+    update(
+        @Param('id', ParseMongoIdPipe) id: string,
+        @Body() updateContentDto: UpdateContentDto,
+    ) {
+        return this.contentService.update(id, updateContentDto);
+    }
 
-  @Delete(':id')
-  remove(@Param('id', ParseMongoIdPipe) id: string) {
-    return this.contentService.remove(id);
-  }
+    @Delete(':id')
+    remove(@Param('id', ParseMongoIdPipe) id: string) {
+        return this.contentService.remove(id);
+    }
 }

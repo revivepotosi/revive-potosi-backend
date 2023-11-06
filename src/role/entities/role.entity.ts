@@ -3,8 +3,8 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Role extends Document {
-  @Prop({ unique: true })
-  name: string;
+    @Prop({ unique: true })
+    name: string;
 }
 
 export const RoleSchema = SchemaFactory.createForClass(Role);

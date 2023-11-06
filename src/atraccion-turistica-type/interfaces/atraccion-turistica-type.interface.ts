@@ -1,3 +1,3 @@
 export interface AtraccionTuristicaType {
-  type: string;
+    type: string;
 }

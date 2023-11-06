@@ -5,16 +5,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Day, DaySchema } from './entities/day.entity';
 
 @Module({
-  controllers: [DayController],
-  providers: [DayService],
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: Day.name,
-        schema: DaySchema,
-      },
-    ]),
-  ],
-  exports: [MongooseModule],
+    controllers: [DayController],
+    providers: [DayService],
+    imports: [
+        MongooseModule.forFeature([
+            {
+                name: Day.name,
+                schema: DaySchema,
+            },
+        ]),
+    ],
+    exports: [MongooseModule],
 })
 export class DayModule {}

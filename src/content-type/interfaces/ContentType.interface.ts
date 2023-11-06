@@ -1,3 +1,3 @@
 export interface ContentType {
-  type: string;
+    type: string;
 }

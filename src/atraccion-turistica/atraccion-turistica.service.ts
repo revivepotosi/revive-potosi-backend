@@ -1,8 +1,8 @@
 import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
+    BadRequestException,
+    Injectable,
+    InternalServerErrorException,
+    NotFoundException,
 } from '@nestjs/common';
 import { CreateAtraccionTuristicaDto } from './dto/create-atraccion-turistica.dto';
 import { UpdateAtraccionTuristicaDto } from './dto/update-atraccion-turistica.dto';
@@ -15,80 +15,84 @@ import MESSAGES from 'src/common/utils/messages';
 
 @Injectable()
 export class AtraccionTuristicaService {
-  private defaultLimit: number;
-  constructor(
-    @InjectModel(AtraccionTuristica.name)
-    private readonly atraccionTuristicaModel: Model<AtraccionTuristica>,
-    private readonly configService: ConfigService,
-  ) {
-    this.defaultLimit = this.configService.get<number>('defaultLimit');
-  }
-  async create(createAtraccionTuristicaDto: CreateAtraccionTuristicaDto) {
-    try {
-      const atraccionTuristica = await this.atraccionTuristicaModel.create(
-        createAtraccionTuristicaDto,
-      );
-      return atraccionTuristica;
-    } catch (error) {
-      this.handleExceptions(error);
+    private defaultLimit: number;
+    constructor(
+        @InjectModel(AtraccionTuristica.name)
+        private readonly atraccionTuristicaModel: Model<AtraccionTuristica>,
+        private readonly configService: ConfigService,
+    ) {
+        this.defaultLimit = this.configService.get<number>('defaultLimit');
     }
-  }
-
-  findAll(paginationDto: PaginationDto) {
-    const { limit = this.defaultLimit, offset = 0 } = paginationDto;
-    return this.atraccionTuristicaModel
-      .find()
-      .limit(limit)
-      .skip(offset)
-      .populate('schedule.day')
-      .populate('type')
-      .select('-__v');
-  }
-
-  async findOne(id: string) {
-    const atraccionTuristica = await this.atraccionTuristicaModel
-      .findById(id)
-      .populate('schedule.day')
-      .populate('type')
-      .select('-__v');
-    if (!atraccionTuristica)
-      throw new NotFoundException(
-        `Atractivo turistico con id "${id}" no encontrado`,
-      );
-    return atraccionTuristica;
-  }
-
-  async update(
-    id: string,
-    updateAtraccionTuristicaDto: UpdateAtraccionTuristicaDto,
-  ) {
-    const atraccionTuristica = await this.findOne(id);
-    try {
-      await atraccionTuristica.updateOne(updateAtraccionTuristicaDto);
-      return { ...atraccionTuristica.toJSON(), ...updateAtraccionTuristicaDto };
-    } catch (error) {
-      this.handleExceptions(error);
+    async create(createAtraccionTuristicaDto: CreateAtraccionTuristicaDto) {
+        try {
+            const atraccionTuristica =
+                await this.atraccionTuristicaModel.create(
+                    createAtraccionTuristicaDto,
+                );
+            return atraccionTuristica;
+        } catch (error) {
+            this.handleExceptions(error);
+        }
     }
-  }
 
-  async remove(id: string) {
-    const { deletedCount } = await this.atraccionTuristicaModel.deleteOne({
-      _id: id,
-    });
-    if (deletedCount === 0)
-      throw new BadRequestException(
-        `Atractivo turistico con id "${id}" no encontrado`,
-      );
-    return MESSAGES.getRemoveMessage(
-      id,
-      'Atractivo turistico eliminado con exito',
-    );
-  }
+    findAll(paginationDto: PaginationDto) {
+        const { limit = this.defaultLimit, offset = 0 } = paginationDto;
+        return this.atraccionTuristicaModel
+            .find()
+            .limit(limit)
+            .skip(offset)
+            .populate('schedule.day')
+            .populate('type')
+            .select('-__v');
+    }
 
-  private handleExceptions(error: any) {
-    console.log(error);
-    throw new InternalServerErrorException(
-      'No se puede crear el atractivo turistico',
-    );
-  }
+    async findOne(id: string) {
+        const atraccionTuristica = await this.atraccionTuristicaModel
+            .findById(id)
+            .populate('schedule.day')
+            .populate('type')
+            .select('-__v');
+        if (!atraccionTuristica)
+            throw new NotFoundException(
+                `Atractivo turistico con id "${id}" no encontrado`,
+            );
+        return atraccionTuristica;
+    }
+
+    async update(
+        id: string,
+        updateAtraccionTuristicaDto: UpdateAtraccionTuristicaDto,
+    ) {
+        const atraccionTuristica = await this.findOne(id);
+        try {
+            await atraccionTuristica.updateOne(updateAtraccionTuristicaDto);
+            return {
+                ...atraccionTuristica.toJSON(),
+                ...updateAtraccionTuristicaDto,
+            };
+        } catch (error) {
+            this.handleExceptions(error);
+        }
+    }
+
+    async remove(id: string) {
+        const { deletedCount } = await this.atraccionTuristicaModel.deleteOne({
+            _id: id,
+        });
+        if (deletedCount === 0)
+            throw new BadRequestException(
+                `Atractivo turistico con id "${id}" no encontrado`,
+            );
+        return MESSAGES.getRemoveMessage(
+            id,
+            'Atractivo turistico eliminado con exito',
+        );
+    }
+
+    private handleExceptions(error: any) {
+        console.log(error);
+        throw new InternalServerErrorException(
+            'No se puede crear el atractivo turistico',
+        );
+    }
 }

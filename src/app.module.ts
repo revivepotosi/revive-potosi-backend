@@ -15,24 +15,24 @@ import { UserModule } from './user/user.module';
 import { AtraccionTuristicaTypeModule } from './atraccion-turistica-type/atraccion-turistica-type.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      load: [EnvConfiguration],
-      validationSchema: JoiValidationSchema,
-    }),
-    MongooseModule.forRoot(process.env.MONGODB, {
-      dbName: process.env.DATABASE,
-    }),
-    CommonModule,
-    AtraccionTuristicaModule,
-    SeedModule,
-    ContentModule,
-    AuthModule,
-    RoleModule,
-    DayModule,
-    ContentTypeModule,
-    UserModule,
-    AtraccionTuristicaTypeModule,
-  ],
+    imports: [
+        ConfigModule.forRoot({
+            load: [EnvConfiguration],
+            validationSchema: JoiValidationSchema,
+        }),
+        MongooseModule.forRoot(process.env.MONGODB, {
+            dbName: process.env.DATABASE,
+        }),
+        CommonModule,
+        AtraccionTuristicaModule,
+        SeedModule,
+        ContentModule,
+        AuthModule,
+        RoleModule,
+        DayModule,
+        ContentTypeModule,
+        UserModule,
+        AtraccionTuristicaTypeModule,
+    ],
 })
 export class AppModule {}

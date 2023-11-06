@@ -3,21 +3,21 @@ import { AtraccionTuristicaTypeService } from './atraccion-turistica-type.servic
 import { AtraccionTuristicaTypeController } from './atraccion-turistica-type.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
-  AtraccionTuristicaType,
-  AtraccionTuristicaTypeSchema,
+    AtraccionTuristicaType,
+    AtraccionTuristicaTypeSchema,
 } from './entities/atraccion-turistica-type.entity';
 
 @Module({
-  controllers: [AtraccionTuristicaTypeController],
-  providers: [AtraccionTuristicaTypeService],
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: AtraccionTuristicaType.name,
-        schema: AtraccionTuristicaTypeSchema,
-      },
-    ]),
-  ],
-  exports: [MongooseModule],
+    controllers: [AtraccionTuristicaTypeController],
+    providers: [AtraccionTuristicaTypeService],
+    imports: [
+        MongooseModule.forFeature([
+            {
+                name: AtraccionTuristicaType.name,
+                schema: AtraccionTuristicaTypeSchema,
+            },
+        ]),
+    ],
+    exports: [MongooseModule],
 })
 export class AtraccionTuristicaTypeModule {}

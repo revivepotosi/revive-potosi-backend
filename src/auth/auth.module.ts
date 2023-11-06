@@ -11,24 +11,24 @@ import { UserRoleGuard } from './guards/user-role.guard';
 import { jwtConfig } from './constants/jwt-config';
 
 @Module({
-  controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, UserRoleGuard],
-  imports: [
-    ConfigModule,
-    MongooseModule.forFeature([
-      {
-        name: User.name,
-        schema: UserSchema,
-      },
-    ]),
-    PassportModule.register({ defaultStrategy: 'jwt' }),
-    JwtModule.registerAsync({
-      useFactory: () => ({
-        secret: process.env.JWT_SECRET,
-        signOptions: jwtConfig.tenHours,
-      }),
-    }),
-  ],
-  exports: [PassportModule, JwtModule, JwtStrategy, UserRoleGuard],
+    controllers: [AuthController],
+    providers: [AuthService, JwtStrategy, UserRoleGuard],
+    imports: [
+        ConfigModule,
+        MongooseModule.forFeature([
+            {
+                name: User.name,
+                schema: UserSchema,
+            },
+        ]),
+        PassportModule.register({ defaultStrategy: 'jwt' }),
+        JwtModule.registerAsync({
+            useFactory: () => ({
+                secret: process.env.JWT_SECRET,
+                signOptions: jwtConfig.tenHours,
+            }),
+        }),
+    ],
+    exports: [PassportModule, JwtModule, JwtStrategy, UserRoleGuard],
 })
 export class AuthModule {}

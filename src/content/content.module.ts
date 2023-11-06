@@ -5,16 +5,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Content, ContentSchema } from './entities/content.entity';
 
 @Module({
-  controllers: [ContentController],
-  providers: [ContentService],
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: Content.name,
-        schema: ContentSchema,
-      },
-    ]),
-  ],
-  exports: [MongooseModule],
+    controllers: [ContentController],
+    providers: [ContentService],
+    imports: [
+        MongooseModule.forFeature([
+            {
+                name: Content.name,
+                schema: ContentSchema,
+            },
+        ]),
+    ],
+    exports: [MongooseModule],
 })
 export class ContentModule {}

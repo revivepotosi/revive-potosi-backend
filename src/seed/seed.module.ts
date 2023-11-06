@@ -6,8 +6,8 @@ import { DayModule } from 'src/day/day.module';
 import { ContentTypeModule } from 'src/content-type/content-type.module';
 
 @Module({
-  controllers: [SeedController],
-  providers: [SeedService],
-  imports: [DayModule, ContentTypeModule, RoleModule],
+    controllers: [SeedController],
+    providers: [SeedService],
+    imports: [DayModule, ContentTypeModule, RoleModule],
 })
 export class SeedModule {}
