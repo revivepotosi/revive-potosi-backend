@@ -42,10 +42,12 @@ export class AuthService {
         if (email) {
             user = await this.userModel
                 .findOne({ email: email.toLowerCase() })
+                .populate('roles')
                 .select('-__v');
         } else if (username) {
             user = await this.userModel
                 .findOne({ username: username.toLowerCase().trim() })
+                .populate('roles')
                 .select('-__v');
         }
         if (!user)
