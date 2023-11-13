@@ -16,7 +16,7 @@ import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { ValidRoles } from 'src/auth/constants/roles';
 
-@Auth(ValidRoles.admin)
+@Auth(ValidRoles.user_admin, ValidRoles.super_admin)
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}

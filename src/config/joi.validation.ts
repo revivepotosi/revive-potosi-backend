@@ -6,4 +6,5 @@ export const JoiValidationSchema = Joi.object({
     DATABASE: Joi.string().required(),
     DEFAULT_LIMIT: Joi.number().default(10),
     JWT_SECRET: Joi.string().required(),
+    SEED_SECRET: Joi.string().required(),
 });

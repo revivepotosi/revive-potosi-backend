@@ -1,6 +1,7 @@
 import { ContentType } from 'src/content-type/interfaces/ContentType.interface';
 import { Day } from 'src/day/interfaces/Day.interface';
 import { Role } from 'src/role/interfaces/Role.interface';
+import { User } from 'src/user/interfaces/user.interface';
 
 export const DAYS: Day[] = [
     {
@@ -81,6 +82,20 @@ export const CONTENT_TYPES: ContentType[] = [
 
 export const ROLES: Role[] = [
     {
-        name: 'admin',
+        name: 'super_admin',
+    },
+    {
+        name: 'user_admin',
+    },
+    {
+        name: 'tourist_attraction_admin',
     },
 ];
+
+export const FIRST_USER: User = {
+    username: 'HQuispe',
+    email: 'hugo.quiSpe96@outlook.es',
+    name: 'Hugo',
+    lastname: 'Quispe',
+    password: 'Hugoquispe',
+};

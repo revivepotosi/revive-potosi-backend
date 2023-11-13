@@ -5,4 +5,5 @@ export const EnvConfiguration = () => ({
     database: process.env.DATABASE,
     defaultLimit: process.env.DEFAULT_LIMIT,
     jwtSecret: process.env.JWT_SECRET,
+    seedSecret: process.env.SEED_SECRET,
 });
